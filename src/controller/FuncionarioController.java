@@ -63,6 +63,22 @@ public class FuncionarioController {
         boolean houveRemocoes = funcionarios.size() != listaDeFuncionariosAposRemocao.size();
     }
 
+    public void aniversariantesDoMes() {
+        try {
+            System.out.print("Valor do mês (1 - Jan, 2 - Fev...): ");
+            int mes = entrada.nextInt();
+
+            List<Funcionario> aniversariantes = funcionarioRepository.filtrarPorMesDeNascimento(mes);
+
+            for (Funcionario funcionario : aniversariantes) {
+                System.out.println(funcionario);
+                System.out.println("----------");
+            }
+        } catch (Exception ignored) {
+
+        }
+    }
+
     private LocalDate converterDataNascimentoParaUmFormatoValido(String dataNascimento) {
         String[] dataNascimentoSeparadaEntreDiaMesEAno = dataNascimento.split("/");
         int dia = Integer.parseInt(dataNascimentoSeparadaEntreDiaMesEAno[0]);
