@@ -111,6 +111,16 @@ public class FuncionarioController {
         listar(funcionarioRepository.obterOrdenadosPorNome());
     }
 
+    public void obterTotalDosSalarios() {
+        double total = 0.0;
+
+        for (Funcionario funcionario : funcionarioRepository.getFuncionarios()) {
+            total += funcionario.getSalario().doubleValue();
+        }
+
+        System.out.printf("Total: %.2f%n", total);
+    }
+
     private LocalDate obterDataNascimento(String dataNascimento) {
         String[] dataNascimentoSeparadaEmDiaMesEAno = dataNascimento.split("/");
         int dia = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[0]);
