@@ -3,10 +3,7 @@ package repository;
 import model.Funcionario;
 import model.Pessoa;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class FuncionarioRepository {
     private List<Funcionario> funcionarios = new ArrayList<>();
@@ -57,5 +54,21 @@ public class FuncionarioRepository {
         }
 
         return Optional.of(funcionarioMaisExperiente);
+    }
+
+    public Map<String, List<Funcionario>> obterAgrupadosPorFuncao() {
+        Map<String, List<Funcionario>> funcionariosAgrupadosPorFuncao = new HashMap<>();
+
+        for (Funcionario funcionario : funcionarios) {
+            String funcao = funcionario.getFuncao();
+
+            if (!funcionariosAgrupadosPorFuncao.containsKey(funcao)) {
+                funcionariosAgrupadosPorFuncao.put(funcao, new ArrayList<>(List.of(funcionario)));
+            } else {
+                funcionariosAgrupadosPorFuncao.get(funcao).add(funcionario);
+            }
+        }
+
+        return funcionariosAgrupadosPorFuncao;
     }
 }
