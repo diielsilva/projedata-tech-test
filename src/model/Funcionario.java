@@ -24,6 +24,12 @@ public class Funcionario extends Pessoa {
         }
     }
 
+    public double quantidadeDeSalariosMinimos() {
+        double salarioMinimo = 1212.0;
+
+        return salario.doubleValue() / salarioMinimo;
+    }
+
     @Override
     public String toString() {
         return "Funcionario {" +
@@ -31,6 +37,7 @@ public class Funcionario extends Pessoa {
                 ", Data de Nascimento = " + dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
                 ", Salário = " + salario +
                 ", Funcao = '" + funcao + '\'' +
+                ", QTD de Salários Mínimos = " + String.format("%.2f", quantidadeDeSalariosMinimos()) +
                 " }";
     }
 }
