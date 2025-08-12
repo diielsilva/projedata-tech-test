@@ -33,12 +33,11 @@ public class FuncionarioRepository {
                 .toList();
     }
 
-    public List<Funcionario> obterFuncionariosOrdenadosPeloNome() {
-        List<Funcionario> funcionariosOrdenadosPeloNome = new ArrayList<>(funcionarios);
-
-        funcionariosOrdenadosPeloNome.sort(Comparator.comparing(Pessoa::getNome));
-
-        return funcionariosOrdenadosPeloNome;
+    public List<Funcionario> obterOrdenadosPorNome() {
+        return funcionarios
+                .stream()
+                .sorted(Comparator.comparing(Pessoa::getNome))
+                .toList();
     }
 
     public Optional<Funcionario> obterFuncionarioMaisVelho() {
