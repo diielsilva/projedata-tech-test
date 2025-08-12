@@ -18,6 +18,10 @@ public class Funcionario extends Pessoa {
         return funcao;
     }
 
+    public BigDecimal getSalario() {
+        return salario;
+    }
+
     public void darAumento(int porcentagem) {
         if (porcentagem > 0) {
             double aumento = porcentagem / 100.0;
