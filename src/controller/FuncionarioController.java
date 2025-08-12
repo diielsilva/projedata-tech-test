@@ -42,6 +42,23 @@ public class FuncionarioController {
         }
     }
 
+    public void removerPorNome() {
+        int numeroDeFuncionariosAntesDaRemocao = funcionarioRepository.getFuncionarios().size();
+
+        System.out.print("Nome para remoção: ");
+        String nome = entrada.next();
+
+        funcionarioRepository.removerPorNome(nome);
+
+        int numeroDeFuncionariosAposARemocao = funcionarioRepository.getFuncionarios().size();
+
+        if (numeroDeFuncionariosAntesDaRemocao == numeroDeFuncionariosAposARemocao) {
+            System.out.println("Não foram encontrados funcionários com este nome!");
+        } else {
+            System.out.println("Funcionários removidos com sucesso!");
+        }
+    }
+
     public void listar(List<Funcionario> funcionarios) {
         for (Funcionario funcionario : funcionarios) {
             System.out.println(funcionario);
@@ -52,19 +69,6 @@ public class FuncionarioController {
         for (Funcionario funcionario : funcionarioRepository.getFuncionarios()) {
             System.out.println(funcionario);
         }
-    }
-
-    public void removerPeloNome() {
-        List<Funcionario> funcionarios = funcionarioRepository.getFuncionarios();
-
-        System.out.print("Nome para remoção: ");
-        String nome = entrada.next();
-
-        funcionarioRepository.removerPorNome(nome);
-
-        List<Funcionario> listaDeFuncionariosAposRemocao = funcionarioRepository.getFuncionarios();
-
-        boolean houveRemocoes = funcionarios.size() != listaDeFuncionariosAposRemocao.size();
     }
 
     public void aniversariantesDoMes() {
