@@ -16,6 +16,7 @@ public class FuncionarioRepository {
         return funcionarios;
     }
 
+    //TODO this will create a bug
     public void removerPorNome(String nome) {
         funcionarios = funcionarios
                 .stream()
@@ -37,6 +38,7 @@ public class FuncionarioRepository {
                 .toList();
     }
 
+    //TODO fix bug that is not getting the oldest employee
     public Optional<Funcionario> obterMaisExperiente() {
         if (funcionarios.isEmpty()) {
             return Optional.empty();
