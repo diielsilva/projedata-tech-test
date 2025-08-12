@@ -27,4 +27,16 @@ public class FuncionarioRepository {
             funcionarios.remove(indice);
         }
     }
+
+    public List<Funcionario> filtrarPorMesDeNascimento(int mes) {
+        List<Funcionario> funcionariosQueNasceramNoMesSelecionado = new ArrayList<>();
+
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getDataNascimento().getMonthValue() == mes) {
+                funcionariosQueNasceramNoMesSelecionado.add(funcionario);
+            }
+        }
+
+        return funcionariosQueNasceramNoMesSelecionado;
+    }
 }
