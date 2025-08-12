@@ -107,6 +107,10 @@ public class FuncionarioController {
         }
     }
 
+    public void obterOrdenadosPorNome() {
+        listar(funcionarioRepository.obterOrdenadosPorNome());
+    }
+
     private LocalDate obterDataNascimento(String dataNascimento) {
         String[] dataNascimentoSeparadaEmDiaMesEAno = dataNascimento.split("/");
         int dia = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[0]);
