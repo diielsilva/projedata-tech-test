@@ -26,16 +26,11 @@ public class FuncionarioRepository {
                 .toList();
     }
 
-    public List<Funcionario> filtrarPorMesDeNascimento(int mes) {
-        List<Funcionario> funcionariosQueNasceramNoMesSelecionado = new ArrayList<>();
-
-        for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getDataNascimento().getMonthValue() == mes) {
-                funcionariosQueNasceramNoMesSelecionado.add(funcionario);
-            }
-        }
-
-        return funcionariosQueNasceramNoMesSelecionado;
+    public List<Funcionario> obterPorMesDeNascimento(int mes) {
+        return funcionarios
+                .stream()
+                .filter(funcionario -> funcionario.getDataNascimento().getMonthValue() == mes)
+                .toList();
     }
 
     public List<Funcionario> obterFuncionariosOrdenadosPeloNome() {
