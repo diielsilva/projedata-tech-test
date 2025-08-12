@@ -31,7 +31,7 @@ public class FuncionarioRepository {
         }
 
         for (Integer indice : indicesParaRemocao) {
-            funcionarios.remove(indice);
+            funcionarios.remove(funcionarios.get(indice));
         }
     }
 
