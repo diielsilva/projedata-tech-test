@@ -40,21 +40,22 @@ public class FuncionarioRepository {
                 .toList();
     }
 
-    public Optional<Funcionario> obterFuncionarioMaisVelho() {
+    public Optional<Funcionario> obterMaisExperiente() {
         if (funcionarios.isEmpty()) {
             return Optional.empty();
         }
 
-        Funcionario funcionarioMaisVelho = funcionarios.getFirst();
+        Funcionario funcionarioMaisExperiente = funcionarios.getFirst();
 
         for (Funcionario funcionario : funcionarios) {
-            boolean oFuncionarioAtualEMaisVelho = funcionario.getDataNascimento().toEpochDay() > funcionarioMaisVelho.getDataNascimento().toEpochDay();
+            boolean oFuncionarioAtualEMaisExperienteQueOAnterior =
+                    funcionario.getDataNascimento().toEpochDay() > funcionarioMaisExperiente.getDataNascimento().toEpochDay();
 
-            if (oFuncionarioAtualEMaisVelho) {
-                funcionarioMaisVelho = funcionario;
+            if (oFuncionarioAtualEMaisExperienteQueOAnterior) {
+                funcionarioMaisExperiente = funcionario;
             }
         }
 
-        return Optional.of(funcionarioMaisVelho);
+        return Optional.of(funcionarioMaisExperiente);
     }
 }
