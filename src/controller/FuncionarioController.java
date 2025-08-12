@@ -88,12 +88,17 @@ public class FuncionarioController {
 
             List<Funcionario> aniversariantes = funcionarioRepository.obterPorMesDeNascimento(mes);
 
+            if (mes < 1 || mes > 12) {
+                System.out.println("Mês inválido");
+                return;
+            }
+
             for (Funcionario funcionario : aniversariantes) {
                 System.out.println(funcionario);
-                System.out.println("----------");
             }
-        } catch (Exception ignored) {
 
+        } catch (Exception ignored) {
+            System.out.println("Mês inválido");
         }
     }
 
@@ -134,7 +139,7 @@ public class FuncionarioController {
                 }
             }
         } catch (Exception ignored) {
-
+            System.out.println("Aumento inválido!");
         }
     }
 
