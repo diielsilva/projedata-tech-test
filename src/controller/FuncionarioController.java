@@ -6,6 +6,7 @@ import repository.FuncionarioRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -39,6 +40,15 @@ public class FuncionarioController {
             System.out.println("Funcionário inserido com sucesso!");
         } catch (Exception ex) {
             System.out.println("Os campos recebidos foram inválidos, tente novamente!");
+        }
+    }
+
+    public void obterAgrupadosPorFuncao() {
+        Map<String, List<Funcionario>> funcionariosAgrupadosPorFuncao = funcionarioRepository.obterAgrupadosPorFuncao();
+
+        for (String funcao : funcionariosAgrupadosPorFuncao.keySet()) {
+            System.out.println(funcao.toUpperCase());
+            listar(funcionariosAgrupadosPorFuncao.get(funcao));
         }
     }
 
