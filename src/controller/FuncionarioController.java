@@ -23,7 +23,7 @@ public class FuncionarioController {
             String nome = entrada.next();
 
             System.out.print("Data de nascimento (dd/mm/aaaa): ");
-            LocalDate dataDeNascimento = converterDataNascimentoParaUmFormatoValido(entrada.next());
+            LocalDate dataDeNascimento = obterDataNascimento(entrada.next());
 
             System.out.print("Salário (ex: 1512.50): ");
             double salario = entrada.nextDouble();
@@ -90,11 +90,11 @@ public class FuncionarioController {
         }
     }
 
-    private LocalDate converterDataNascimentoParaUmFormatoValido(String dataNascimento) {
-        String[] dataNascimentoSeparadaEntreDiaMesEAno = dataNascimento.split("/");
-        int dia = Integer.parseInt(dataNascimentoSeparadaEntreDiaMesEAno[0]);
-        int mes = Integer.parseInt(dataNascimentoSeparadaEntreDiaMesEAno[1]);
-        int ano = Integer.parseInt(dataNascimentoSeparadaEntreDiaMesEAno[2]);
+    private LocalDate obterDataNascimento(String dataNascimento) {
+        String[] dataNascimentoSeparadaEmDiaMesEAno = dataNascimento.split("/");
+        int dia = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[0]);
+        int mes = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[1]);
+        int ano = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[2]);
 
         return LocalDate.of(ano, mes, dia);
     }
