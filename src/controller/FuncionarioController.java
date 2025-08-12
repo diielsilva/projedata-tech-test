@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class FuncionarioController {
     private final FuncionarioRepository funcionarioRepository;
+    private final Scanner entrada = new Scanner(System.in);
 
     public FuncionarioController(FuncionarioRepository funcionarioRepository) {
         this.funcionarioRepository = funcionarioRepository;
@@ -17,7 +18,6 @@ public class FuncionarioController {
 
     public String inserirFuncionario() {
         try {
-            Scanner entrada = new Scanner(System.in);
             System.out.print("Nome: ");
             String nome = entrada.next();
 
@@ -48,6 +48,19 @@ public class FuncionarioController {
             System.out.println(funcionario);
             System.out.println("----------");
         }
+    }
+
+    public void removerPeloNome() {
+        List<Funcionario> funcionarios = funcionarioRepository.getFuncionarios();
+
+        System.out.print("Nome para remoção: ");
+        String nome = entrada.next();
+
+        funcionarioRepository.removerPeloNome(nome);
+
+        List<Funcionario> listaDeFuncionariosAposRemocao = funcionarioRepository.getFuncionarios();
+
+        boolean houveRemocoes = funcionarios.size() != listaDeFuncionariosAposRemocao.size();
     }
 
     private LocalDate converterDataNascimentoParaUmFormatoValido(String dataNascimento) {
