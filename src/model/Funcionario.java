@@ -14,6 +14,16 @@ public class Funcionario extends Pessoa {
         this.funcao = funcao;
     }
 
+    public void darAumento(int porcentagem) {
+        if (porcentagem > 0) {
+            double aumento = porcentagem / 100.0;
+
+            aumento += 1;
+
+            salario = salario.multiply(BigDecimal.valueOf(aumento));
+        }
+    }
+
     @Override
     public String toString() {
         return "Funcionario {" +
