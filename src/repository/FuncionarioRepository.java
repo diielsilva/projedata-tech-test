@@ -37,7 +37,6 @@ public class FuncionarioRepository {
                 .toList();
     }
 
-    //TODO fix bug that is not getting the oldest employee
     public Optional<Funcionario> obterMaisExperiente() {
         if (funcionarios.isEmpty()) {
             return Optional.empty();
@@ -47,7 +46,7 @@ public class FuncionarioRepository {
 
         for (Funcionario funcionario : funcionarios) {
             boolean oFuncionarioAtualEMaisExperienteQueOAnterior =
-                    funcionario.getDataNascimento().toEpochDay() > funcionarioMaisExperiente.getDataNascimento().toEpochDay();
+                    funcionario.getDataNascimento().toEpochDay() < funcionarioMaisExperiente.getDataNascimento().toEpochDay();
 
             if (oFuncionarioAtualEMaisExperienteQueOAnterior) {
                 funcionarioMaisExperiente = funcionario;
