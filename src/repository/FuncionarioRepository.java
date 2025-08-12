@@ -15,6 +15,10 @@ public class FuncionarioRepository {
         funcionarios.add(funcionario);
     }
 
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
     public void removerPeloNome(String nome) {
         List<Integer> indicesParaRemocao = new ArrayList<>();
 
