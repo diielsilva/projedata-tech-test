@@ -121,6 +121,23 @@ public class FuncionarioController {
         System.out.printf("Total: %.2f%n", total);
     }
 
+    public void darAumentoATodos() {
+        try {
+            System.out.print("Porcentagem do aumento: ");
+            int porcentagem = entrada.nextInt();
+
+            if (porcentagem < 0) {
+                System.out.println("O aumento tem que ser de ao menos 1%!");
+            } else {
+                for (Funcionario funcionario : funcionarioRepository.getFuncionarios()) {
+                    funcionario.darAumento(porcentagem);
+                }
+            }
+        } catch (Exception ignored) {
+
+        }
+    }
+
     private LocalDate obterDataNascimento(String dataNascimento) {
         String[] dataNascimentoSeparadaEmDiaMesEAno = dataNascimento.split("/");
         int dia = Integer.parseInt(dataNascimentoSeparadaEmDiaMesEAno[0]);
