@@ -1,11 +1,15 @@
-import controller.MenuController;
+package program;
 
-import java.util.Scanner;
+import controller.FuncionarioController;
+import controller.MenuController;
+import repository.FuncionarioRepository;
 
 public class Aplicacao {
     public static void main(String[] args) {
-        MenuController menu = new MenuController(new Scanner(System.in));
+        FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+        FuncionarioController funcionarioController = new FuncionarioController(funcionarioRepository);
+        MenuController menuController = new MenuController(funcionarioController);
 
-        menu.exibirMenu();
+        menuController.exibirMenu();
     }
 }
