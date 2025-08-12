@@ -10,6 +10,6 @@ public class Aplicacao {
         FuncionarioController funcionarioController = new FuncionarioController(funcionarioRepository);
         MenuController menuController = new MenuController(funcionarioController);
 
-        menuController.exibirMenu();
+        menuController.iniciar();
     }
 }
