@@ -14,6 +14,10 @@ public class Funcionario extends Pessoa {
         this.funcao = funcao;
     }
 
+    public String getFuncao() {
+        return funcao;
+    }
+
     public void darAumento(int porcentagem) {
         if (porcentagem > 0) {
             double aumento = porcentagem / 100.0;
