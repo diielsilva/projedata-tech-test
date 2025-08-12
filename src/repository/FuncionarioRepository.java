@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FuncionarioRepository {
-    private final List<Funcionario> funcionarios = new ArrayList<>();
+    private List<Funcionario> funcionarios = new ArrayList<>();
 
     public void adicionar(Funcionario funcionario) {
         funcionarios.add(funcionario);
@@ -19,20 +19,11 @@ public class FuncionarioRepository {
         return funcionarios;
     }
 
-    public void removerPeloNome(String nome) {
-        List<Integer> indicesParaRemocao = new ArrayList<>();
-
-        for (int i = 0; i < funcionarios.size(); i++) {
-            Funcionario funcionario = funcionarios.get(i);
-
-            if (funcionario.getNome().equals(nome)) {
-                indicesParaRemocao.add(i);
-            }
-        }
-
-        for (Integer indice : indicesParaRemocao) {
-            funcionarios.remove(funcionarios.get(indice));
-        }
+    public void removerPorNome(String nome) {
+        funcionarios = funcionarios
+                .stream()
+                .filter(funcionario -> !funcionario.getNome().equals(nome))
+                .toList();
     }
 
     public List<Funcionario> filtrarPorMesDeNascimento(int mes) {
