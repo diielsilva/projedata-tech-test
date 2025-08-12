@@ -6,6 +6,7 @@ import model.Pessoa;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class FuncionarioRepository {
     private final List<Funcionario> funcionarios = new ArrayList<>();
@@ -48,5 +49,23 @@ public class FuncionarioRepository {
         funcionariosOrdenadosPeloNome.sort(Comparator.comparing(Pessoa::getNome));
 
         return funcionariosOrdenadosPeloNome;
+    }
+
+    public Optional<Funcionario> obterFuncionarioMaisVelho() {
+        if (funcionarios.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Funcionario funcionarioMaisVelho = funcionarios.getFirst();
+
+        for (Funcionario funcionario : funcionarios) {
+            boolean oFuncionarioAtualEMaisVelho = funcionario.getDataNascimento().toEpochDay() > funcionarioMaisVelho.getDataNascimento().toEpochDay();
+
+            if (oFuncionarioAtualEMaisVelho) {
+                funcionarioMaisVelho = funcionario;
+            }
+        }
+
+        return Optional.of(funcionarioMaisVelho);
     }
 }
