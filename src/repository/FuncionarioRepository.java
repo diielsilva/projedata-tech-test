@@ -16,12 +16,11 @@ public class FuncionarioRepository {
         return funcionarios;
     }
 
-    //TODO this will create a bug
     public void removerPorNome(String nome) {
-        funcionarios = funcionarios
+        funcionarios = new ArrayList<>(funcionarios
                 .stream()
                 .filter(funcionario -> !funcionario.getNome().equals(nome))
-                .toList();
+                .toList());
     }
 
     public List<Funcionario> obterPorMesDeNascimento(int mes) {
