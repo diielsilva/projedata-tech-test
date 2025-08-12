@@ -42,12 +42,15 @@ public class FuncionarioController {
         }
     }
 
-    public void listarFuncionarios() {
-        List<Funcionario> funcionarios = funcionarioRepository.getFuncionarios();
-
+    public void listar(List<Funcionario> funcionarios) {
         for (Funcionario funcionario : funcionarios) {
             System.out.println(funcionario);
-            System.out.println("----------");
+        }
+    }
+
+    public void listar() {
+        for (Funcionario funcionario : funcionarioRepository.getFuncionarios()) {
+            System.out.println(funcionario);
         }
     }
 
