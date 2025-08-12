@@ -6,17 +6,18 @@ import repository.FuncionarioRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class FuncionarioController {
-    private final FuncionarioRepository funcionarioRepository;
     private final Scanner entrada = new Scanner(System.in);
+    private final FuncionarioRepository funcionarioRepository;
 
     public FuncionarioController(FuncionarioRepository funcionarioRepository) {
         this.funcionarioRepository = funcionarioRepository;
     }
 
-    public String inserirFuncionario() {
+    public void adicionar() {
         try {
             System.out.print("Nome: ");
             String nome = entrada.next();
@@ -35,9 +36,9 @@ public class FuncionarioController {
 
             funcionarioRepository.adicionar(funcionario);
 
-            return "Funcionário cadastrado com sucesso!";
+            System.out.println("Funcionário inserido com sucesso!");
         } catch (Exception ex) {
-            return "Os campos recebidos foram inválidos, tente novamente!";
+            System.out.println("Os campos recebidos foram inválidos, tente novamente!");
         }
     }
 
@@ -56,7 +57,7 @@ public class FuncionarioController {
         System.out.print("Nome para remoção: ");
         String nome = entrada.next();
 
-        funcionarioRepository.removerPeloNome(nome);
+        funcionarioRepository.removerPorNome(nome);
 
         List<Funcionario> listaDeFuncionariosAposRemocao = funcionarioRepository.getFuncionarios();
 
@@ -68,7 +69,7 @@ public class FuncionarioController {
             System.out.print("Valor do mês (1 - Jan, 2 - Fev...): ");
             int mes = entrada.nextInt();
 
-            List<Funcionario> aniversariantes = funcionarioRepository.filtrarPorMesDeNascimento(mes);
+            List<Funcionario> aniversariantes = funcionarioRepository.obterPorMesDeNascimento(mes);
 
             for (Funcionario funcionario : aniversariantes) {
                 System.out.println(funcionario);
@@ -76,6 +77,16 @@ public class FuncionarioController {
             }
         } catch (Exception ignored) {
 
+        }
+    }
+
+    public void obterMaisExperiente() {
+        Optional<Funcionario> funcionarioMaisExperiente = funcionarioRepository.obterMaisExperiente();
+
+        if (funcionarioMaisExperiente.isPresent()) {
+            System.out.println(funcionarioMaisExperiente.get());
+        } else {
+            System.out.println("Não há funcionários cadastrados!");
         }
     }
 
