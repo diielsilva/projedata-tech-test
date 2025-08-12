@@ -1,8 +1,10 @@
 package repository;
 
 import model.Funcionario;
+import model.Pessoa;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class FuncionarioRepository {
@@ -38,5 +40,13 @@ public class FuncionarioRepository {
         }
 
         return funcionariosQueNasceramNoMesSelecionado;
+    }
+
+    public List<Funcionario> obterFuncionariosOrdenadosPeloNome() {
+        List<Funcionario> funcionariosOrdenadosPeloNome = new ArrayList<>(funcionarios);
+
+        funcionariosOrdenadosPeloNome.sort(Comparator.comparing(Pessoa::getNome));
+
+        return funcionariosOrdenadosPeloNome;
     }
 }
